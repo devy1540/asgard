@@ -10,12 +10,15 @@
     "agents/tyr.md",
     "agents/bragi.md",
     "agents/loki.md",
-    "agents/freya.md"
+    "agents/freya.md",
+    "agents/norns.md"
   ],
   "skills": [
     "skills/bifrost",
     "skills/mimir",
-    "skills/forge"
+    "skills/forge",
+    "skills/audit",
+    "skills/evolve"
   ],
   "hooks": "hooks/hooks.json"
 }

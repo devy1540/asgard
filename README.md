@@ -90,10 +90,12 @@ Each stage has a **gate**. No stage proceeds without passing.
 | **/asgard:bifrost** | Full pipeline — interview to final output with quality loop |
 | **/asgard:mimir** | Interview only — collect information for later generation |
 | **/asgard:forge** | Generate from existing data — reuse interviews with new targets |
+| **/asgard:audit** | Self-verification — validate internal consistency and integrity |
+| **/asgard:evolve** | Self-evolution — analyze past runs and improve agents/protocols |
 
 ---
 
-## The Eight Gods
+## The Nine Gods
 
 | Agent | Role | Model | Permissions |
 |:------|:-----|:-----:|:------------|
@@ -105,8 +107,9 @@ Each stage has a **gate**. No stage proceeds without passing.
 | **Bragi** | Writer — Resume.md and Portfolio.md generation | opus | full |
 | **Loki** | Verifier — claim verification, exaggeration detection | opus | read-only |
 | **Freya** | Quality Evaluator — 7-dimension scoring and gate decision | opus | read-only |
+| **Norns** | Self-Evolution — audit integrity, analyze history, evolve plugins | opus | full |
 
-6 of 8 agents are **read-only**. Only the orchestrator and the writer get write access.
+6 of 9 agents are **read-only**. Only the orchestrator, writer, and evolution engine get write access.
 
 ---
 
@@ -194,11 +197,14 @@ asgard/
 │   ├── tyr.md                #   Analyst
 │   ├── bragi.md              #   Writer
 │   ├── loki.md               #   Verifier
-│   └── freya.md              #   Quality Evaluator
+│   ├── freya.md              #   Quality Evaluator
+│   └── norns.md              #   Self-Evolution Engine
 ├── skills/                   # Slash commands
 │   ├── bifrost/SKILL.md      #   Full pipeline
 │   ├── mimir/SKILL.md        #   Interview only
-│   └── forge/SKILL.md        #   Generate from data
+│   ├── forge/SKILL.md        #   Generate from data
+│   ├── audit/SKILL.md        #   Self-verification
+│   └── evolve/SKILL.md       #   Self-evolution
 ├── docs/shared/              # Shared protocols
 │   ├── worker-preamble.md    #   Agent lifecycle
 │   ├── team-teardown.md      #   Shutdown protocol
