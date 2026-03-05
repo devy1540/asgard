@@ -1,0 +1,20 @@
+{
+  "name": "asgard",
+  "title": "Asgard - PR Material Generator",
+  "description": "Generate tailored resumes and portfolios through an AI-powered multi-agent pipeline with Norse mythology themed agents. Supports job posting analysis, Socratic interviews, external data collection, and iterative quality improvement.",
+  "version": "1.0.0",
+  "author": "hjyoon",
+  "license": "MIT",
+  "tags": [
+    "resume",
+    "portfolio",
+    "career",
+    "interview",
+    "job-search",
+    "multi-agent",
+    "pipeline"
+  ],
+  "homepage": "https://github.com/hjyoon/asgard",
+  "repository": "https://github.com/hjyoon/asgard",
+  "minClaudeCodeVersion": "1.0.0"
+}

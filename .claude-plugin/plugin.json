@@ -1,0 +1,21 @@
+{
+  "name": "asgard",
+  "version": "1.0.0",
+  "description": "PR material generation plugin - resumes and portfolios via multi-agent pipeline",
+  "agents": [
+    "agents/odin.md",
+    "agents/heimdall.md",
+    "agents/mimir.md",
+    "agents/huginn.md",
+    "agents/tyr.md",
+    "agents/bragi.md",
+    "agents/loki.md",
+    "agents/freya.md"
+  ],
+  "skills": [
+    "skills/bifrost",
+    "skills/mimir",
+    "skills/forge"
+  ],
+  "hooks": "hooks/hooks.json"
+}

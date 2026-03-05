@@ -1,0 +1,26 @@
+{
+  "hooks": [
+    {
+      "name": "quality-gate-validation",
+      "description": "Validates quality gate scores after Freya writes quality-scores.json",
+      "event": "PostToolUse",
+      "matcher": {
+        "tool": "Write",
+        "path_pattern": "quality-scores.json"
+      },
+      "command": "bash hooks/validate-gate.sh \"$FILE_PATH\"",
+      "timeout": 10000
+    },
+    {
+      "name": "artifact-checkpoint",
+      "description": "Creates a backup checkpoint whenever a key artifact is written to the session directory",
+      "event": "PostToolUse",
+      "matcher": {
+        "tool": "Write",
+        "path_pattern": ".asgard/*/*.md"
+      },
+      "command": "bash hooks/checkpoint.sh \"$FILE_PATH\"",
+      "timeout": 5000
+    }
+  ]
+}
