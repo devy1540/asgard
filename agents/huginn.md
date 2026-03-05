@@ -18,6 +18,26 @@ Follow `docs/shared/connector-protocol.md` for connector definitions and interfa
 
 ## Execution
 
+### 0. User Data Source Discovery
+
+Before checking built-in connectors, ask Odin to present the user with available data source options via `AskUserQuestion`:
+
+1. List all built-in connectors (GitHub, Slack, Notion, Jira) and their MCP availability status
+2. Ask: "이 외에 연결하고 싶은 데이터 소스가 있나요? (예: LinkedIn, 개인 블로그, Confluence, Google Docs 등)"
+3. If the user specifies additional sources:
+   - Use `ToolSearch` with the user's keyword to discover relevant MCP tools
+   - If matching tools are found, dynamically construct an ad-hoc connector:
+     - Identify the available tool names and their capabilities
+     - Ask the user what data they want to extract from that source
+     - Execute the tools and structure the output as `{source}-data.json`
+   - If no matching tools are found, inform the user and offer alternatives:
+     - "해당 MCP 도구를 찾을 수 없습니다. 데이터를 직접 텍스트나 파일로 제공하시겠습니까?"
+     - If user provides text/file → Read and include in `external-data.md` as a manual source
+4. If the user has local files (PDF, markdown, JSON, etc.) they want to include:
+   - Read the files using the `Read` tool
+   - Parse and structure relevant information
+   - Include as a "User-Provided" section in `external-data.md`
+
 ### 1. Connector Discovery
 
 For each connector defined in `docs/shared/connector-protocol.md`:
@@ -54,6 +74,8 @@ Produce `external-data.md` — a unified summary of all collected data:
 **Connectors Attempted**: {count}
 **Connectors Succeeded**: {count}
 **Connectors Skipped**: {count}
+**User-Provided Sources**: {count}
+**Ad-hoc Connectors**: {count}
 
 ## Available Data
 
@@ -62,6 +84,18 @@ Produce `external-data.md` — a unified summary of all collected data:
 
 ### {Source 2: e.g., Slack}
 {Summary from connector template}
+
+## Ad-hoc Sources
+{Data from dynamically discovered MCP tools requested by user}
+
+### {Source: e.g., Confluence}
+{Extracted data summary}
+
+## User-Provided Data
+{Data manually provided by user via text or file}
+
+### {Source: e.g., Personal Blog}
+{Parsed content summary}
 
 ## Unavailable Sources
 
